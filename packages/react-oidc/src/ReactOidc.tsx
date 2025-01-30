@@ -66,8 +66,9 @@ export const useOidc = (configurationName = defaultConfigurationName) => {
   };
   const renewTokens = async (
     extras: StringMap | undefined = undefined,
+    scope: string = null
   ): Promise<OidcAccessToken | OidcIdToken> => {
-    const tokens = await getOidc(configurationName).renewTokensAsync(extras);
+    const tokens = await getOidc(configurationName).renewTokensAsync(extras, scope);
 
     return {
       // @ts-ignore
